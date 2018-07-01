@@ -6,7 +6,7 @@
 (function (window, angular, undefined) {
   'use strict';
 
-  angular.module('angularLocalStorage', ['ngCookies']).factory('storage', ['$parse', '$cookieStore', '$window', '$log', function ($parse, $cookieStore, $window, $log) {
+  angular.module('angularLocalStorage', ['ngCookies']).factory('storage', ['$parse', '$cookies', '$window', '$log', function ($parse, $cookies, $window, $log) {
     /**
      * Global Vars
      */
@@ -72,7 +72,7 @@
       set: function (key, value) {
         if (!supported) {
           try {
-            $cookieStore.put(key, value);
+            $cookies.put(key, value);
             return value;
           } catch (e) {
             $log.log('Local Storage not supported, make sure you have angular-cookies enabled.');
@@ -91,7 +91,7 @@
       get: function (key) {
         if (!supported) {
           try {
-            return $cookieStore.get(key);
+            return $cookies.get(key);
           } catch (e) {
             return null;
           }
@@ -108,7 +108,7 @@
       remove: function (key) {
         if (!supported) {
           try {
-            $cookieStore.remove(key);
+            $cookies.remove(key);
             return true;
           } catch (e) {
             return false;

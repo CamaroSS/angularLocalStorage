@@ -1,6 +1,6 @@
 {
   "name": "angularLocalStorage",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "main": "dist/angularLocalStorage.min.js",
   "repository": {
     "type": "git",

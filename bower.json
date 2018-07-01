@@ -1,6 +1,6 @@
 {
   "name": "angularLocalStorage",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "main": "dist/angularLocalStorage.min.js",
   "ignore": [
     "**/.*",
