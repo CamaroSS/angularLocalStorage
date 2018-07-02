@@ -74,13 +74,13 @@
         if (!supported) {
           try {
             $cookies.put(key, saver);
-            return privateMethods.parseValue(saver);
+            return publicMethods.get(key);
           } catch (e) {
             $log.log('Local Storage not supported, make sure you have angular-cookies enabled.');
           }
         }        
         storage.setItem(key, saver);
-        return privateMethods.parseValue(saver);
+        return publicMethods.get(key);
       },
 
       /**
