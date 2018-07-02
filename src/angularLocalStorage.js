@@ -70,15 +70,15 @@
        * @returns {*} - will return whatever it is you've stored in the local storage
        */
       set: function (key, value) {
+        var saver = angular.toJson(value);
         if (!supported) {
           try {
-            $cookies.put(key, value);
-            return value;
+            $cookies.put(key, saver);
+            return privateMethods.parseValue(saver);
           } catch (e) {
             $log.log('Local Storage not supported, make sure you have angular-cookies enabled.');
           }
-        }
-        var saver = angular.toJson(value);
+        }        
         storage.setItem(key, saver);
         return privateMethods.parseValue(saver);
       },
@@ -89,9 +89,11 @@
        * @returns {*} - Object,String,Float,Boolean depending on what you stored
        */
       get: function (key) {
+        var item;
         if (!supported) {
           try {
-            return $cookies.get(key);
+            item = $cookies.get(key);
+            return privateMethods.parseValue(item);
           } catch (e) {
             return null;
           }
